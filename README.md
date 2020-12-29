@@ -2,6 +2,7 @@
 
 
 Tasks done :
-Beginner
-Intermediate-A
-Intermediate-B
+Beginner,
+Intermediate-A,
+Intermediate-B,
+Bonus task 1
