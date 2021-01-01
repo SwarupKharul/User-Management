@@ -1,9 +1,12 @@
 {% extends "admin/base.html" %}
-
-{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% load static %}
+{% block title %}
+{% if subtitle %}{{ subtitle }} | {% endif %}Admin | {{ site_title|default:_('Django site admin') }}
+{% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">User Management Admin</a></h1>
+<img src="{% static 'user/manager.png' %}" width="30" height="30" class="d-inline-block align-top">
+<h1 id="site-name" style="float:right;"><a href="{% url 'admin:index' %}">&nbsp; User Management Admin</a></h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
