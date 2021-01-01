@@ -1,9 +1,10 @@
 {% extends "user/base.html" %}
 {% block content %}
 <br>
-<center><h1>Users</h1></center> 
+<center><h1>Users</h1></center>
 <br>
 <div class="table-responsive">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
 <table class="table table-bordered">
     <thead class="table-primary">
       <tr>
@@ -13,16 +14,27 @@
         <th scope="col">Account Balance</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="myTable">
 {% for user in users %}
       <tr>
-        <td><img src="{{ user.image.url }}" width="30" height="30" class="d-inline-block align-top"> &nbsp; {{ user.name }}</td>
+        <td><img src="{{ user.image.url }}" width="40" height="40" class="d-inline-block align-top"> &nbsp; {{ user.name }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.url }}</td>
+        <td><a href="{{ user.url }}">{{ user.url }}</a></td>
         <td>{{ user.balance }}</td>
       </tr>
 {% endfor %}
 </tbody>
 </table>
 </div>
+<br>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 {% endblock %}
